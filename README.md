@@ -136,7 +136,7 @@ AI_BOT20/
 | [Normal]  [Smile]  [Cry]  [Shiver]  [Angry]                  |
 +--------------------------------------------------------------+
 ```
-![Project Screenshot](screenshot.png)
+![Project Screenshot](Dashboard_SS.png)
 
 * `ACCESS_NOTIFICATION_POLICY`: Auto-enables Distraction-Free DND mode.
 * `BIND_NOTIFICATION_LISTENER_SERVICE`: Real-time YouTube Music / Spotify track & album art sync.
