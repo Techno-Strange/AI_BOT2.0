@@ -11,30 +11,47 @@
 ## ✨ Features Overview
 
 ### 🤖 Expressive Robot Face & Visual Animations
-* **5 Expressions**: `NORMAL` (Neon Cyan), `SMILING` (Emerald Green), `CRYING` (Royal Blue), `SHIVERING` (Ice Blue), and `ANGRY` (Crimson Red).
+* **5 Expression Modes**: `NORMAL` (Neon Cyan), `SMILING` (Emerald Green), `CRYING` (Royal Blue), `SHIVERING` (Ice Blue), and `ANGRY` (Crimson Red).
 * **Lip-Sync Audio Morphing**: Anime-style mouth morphing synchronized with Friday's TTS voice output.
-* **Music Headphone Visuals**: Robot wears glowing neon studio headphones and closes eyes (`^ ^`) in blissful music mode.
-* **Synchronized Color Theme**: All HUD boxes (`Digital Clock`, `Weather`, `Music Player`, `Environment Pills`, `Background Glow`) dynamically update their glowing liquid-flow borders and accent text in **100% unison** with the active expression mode.
+* **Music Studio Headphones**: Robot wears glowing neon headphones and closes eyes (`^ ^`) when listening to music.
+* **100% Harmonious Theme Sync**: All HUD boxes (`Digital Clock`, `Global Weather`, `Music Player`, `Environment Pills`, `Background Glow`) update their revolving liquid-flow borders and text in **100% unison** with the active expression mode (pure crimson/white flow in Angry mode, pure emerald/white in Smile mode, etc.).
 
-### 🎵 Cyberpunk Music Player HUD
-* **Automatic System Media Sync**: Automatically hooks into active background playback (YouTube Music, Spotify, Apple Music, Wynk, Local Audio).
-* **Live Album Art Cover Photo**: Displays real-time album cover artwork directly inside Friday's Music HUD.
-* **Interactive Touch Seek Bar**: Touch/drag anywhere on the slider to seek directly to any timestamp.
-* **Synchronized Real-Time Lyrics**: Rhythmical lyric line box scrolling in sync with track position.
-* **Hardware Media Controls**: Crimson Red **`⏮ Previous`**, Mode Accent **`⏯ Play/Pause`**, and Emerald Green **`⏭ Next`** buttons.
+### 🎵 Cyberpunk Music Player HUD & YouTube Music Sync
+* **Live System & YouTube Music Sync**: Automatically hooks into active playback (YouTube Music, Spotify, Apple Music, Wynk, Local Audio).
+* **Live Album Cover Photo**: Displays real-time album cover artwork directly inside Friday's Music HUD.
+* **Touch-Interactive Seek Bar (`Slider`)**: Touch or drag anywhere along the seek bar slider to jump audio playback to that exact timestamp (`seekTo`).
+* **Real-Time Scrolling Lyrics**: Synchronized lyrics box scrolling in real-time with track position.
+* **Color-Coded Hardware Media Controls**: Crimson Red **`⏮ Previous`**, Mode Accent **`⏯ Play/Pause`**, and Emerald Green **`⏭ Next`** buttons.
+* **Offline Protection UI**: Displays `🌐 Internet Offline` when disconnected, hiding online stream data.
 
+### ⏰ Digital Clock, System Alarm, Stopwatch & Countdown Timer
+* **Ultra-Huge 50sp Time Digits**: Massive extra-bold time numbers filling the portrait card space.
+* **Header AM/PM Badge**: AM/PM indicator placed in a glowing pill badge in the header.
+* **Live Mobile System Alarm Sync**: Queries Android `AlarmManager.nextAlarmClock` (`⏰ Alarm: 07:30 AM`) & system status bar alarm icon (`⏰`). Includes 1-tap alarm creator (`TimePickerDialog`).
+* **⏱ Stopwatch Mode**: Real-time centisecond timer (`00:00.00`) with Start/Pause & Reset controls.
+* **⌛ Countdown Timer Mode**: Preset duration chips (`1m`, `3m`, `5m`, `10m`), live countdown (`03:00` $\rightarrow$ `00:00`), and glowing red Alarm Pop-Up Dialog (**`⏰ TIMER FINISHED!`**) when reaching zero.
 
-### ⏰ Digital Clock & System Alarm Sync
-* **Ultra-Huge Digits**: Massive 50sp extra-bold time numbers filling the left portrait box.
-* **Header AM/PM Badge**: Automatic AM/PM pill badge in the clock header.
-* **Live Mobile Alarm Sync**: Queries Android `AlarmManager.nextAlarmClock` in real-time (`⏰ Alarm: 07:30 AM`).
-* **1-Tap Alarm Creator**: Tap the alarm bar to open an in-app TimePicker that sets an alarm in Android's native Alarm Clock app.
+### 🎙 Friday Voice Assistant & Hardware Spec Analysis
+* **"Friday, Greet Yourself!"**: Friday queries real mobile hardware specs (Manufacturer, Model, CPU Cores, Total RAM, Free RAM, Total Storage, Free Storage, Android Version) and speaks her self-introduction out loud.
+* **Voice Expression Switching**: *"Friday, turn into happy mode"*, *"turn into angry mode"*, *"turn into cold mode"*, etc.
+* **Voice Music Search & Play**: Say *"Friday, play Bawra"* or *"play Kesariya on YouTube Music"*, and Friday searches and starts playing that song directly on YouTube Music!
+* **Hands-Free Queries & Commands**: ESP32 Temperature, Humidity, Battery, Weather, Clock, Alarm, Stopwatch, and Timer voice commands.
+* **Self-Listening Prevention**: Speech recognition automatically pauses while Friday speaks TTS output so she never loops her own voice.
 
+### 📱 Live Top Bar Status & 10% Battery Depletion Warnings
+* **Live Status Indicators**:
+  * `[ ESP32 Connected / Offline ]` (Green / Gray dot)
+  * `[ Internet Online / Offline ]` (Green / Red dot)
+  * `[ 🔋 Phone Battery % & Charging ]` (`🔋 78%` / `⚡ 85% Charging`)
+* **10% Battery Depletion Voice Warnings**: Below 50% battery, Friday warns out loud every 10% depletion step (*"Warning! Mobile phone battery depleted to 38%. Please plug in your charger."*).
 
-### 🎙 Friday Voice Assistant & Female TTS
-* **Offline Speech Recognition**: Built-in voice command processor for temperature, weather, time, and expression switches.
-* **Female TTS Output**: Customized Android TextToSpeech engine with forced female voice override (`en-us-x-sfg-local`).
+### 🎭 Top-Right `MODES` Assistant Panel & Mic Toggle
+* **Action Button Order**: `[ 🎭 MODES ]` $\rightarrow$ `[ 🎙 MIC OFF / LISTENING ]` $\rightarrow$ `[ 📡 SETTINGS ]`.
+* **`🎭 MODES` Panel**: Dedicated dialog panel with 1-tap options for all expression modes, assistant queries, alarm, stopwatch, timer, and music controls.
+* **`🎙 MIC OFF / LISTENING`**: Interactive mic toggle button for continuous background speech recognition.
 
+### 🔕 Distraction-Free Priority DND Mode
+* **Notification Suppression**: Auto-enables Priority Do Not Disturb (DND) mode while running, keeping notification popups and sounds hidden. Restores original settings upon exit.
 ### 🔕 Distraction-Free DND Mode
 * **Notification Suppression**: Automatically enables Priority Do Not Disturb (DND) mode while the app is active, keeping notification popups and sounds hidden. Restores original settings when exiting.
 
@@ -63,24 +80,12 @@ The firmware handles dual-mode communication over **USB Serial (115200 Baud)** a
 
 ## 🛠️ Project Architecture
 
-### Required Components
-1. **ESP32 Development Board** (ESP-WROOM-32 / NodeMCU ESP32)
-2. **DHT22** (or DHT11) Temperature & Humidity Sensor
-3. **USB Type-C OTG Cable** (Type-C to Type-C or OTG Adapter)
-4. **Android Smartphone** (Android 11 / API 30 or higher)
-
-### Wiring Diagram
-| DHT22 Sensor Pin | ESP32 Pin |
-| :--- | :--- |
-| **VCC** | `3.3V` or `5V` |
-| **DATA** | `GPIO 4` |
-| **GND** | `GND` |
 ```
 AI_BOT20/
 ├── app/src/main/
 │   ├── java/com/example/ai_bot20/
-│   │   └── MainActivity.kt        # Main Compose UI, ViewModels, System Media Sync & Voice Manager
-│   └── AndroidManifest.xml        # DND, Audio, Bluetooth, USB & Notification Listener Permissions
+│   │   └── MainActivity.kt        # Main Compose UI, ViewModels, System Media Sync & Voice Assistant
+│   └── AndroidManifest.xml        # DND, Audio, Bluetooth, USB, Alarm & Notification Listener Permissions
 ├── firmware/
 │   └── AI_Bot_ESP32_DHT22.ino     # ESP32 C++ Sketch (BLE GATT, USB OTG, Wi-Fi AP, DHT11/22)
 ├── build.gradle.kts
@@ -89,9 +94,18 @@ AI_BOT20/
 
 ---
 
+## 🔌 Hardware Wiring Guide (ESP32 & DHT22/DHT11)
+
+| ESP32 Pin | Component Pin | Description |
+| :--- | :--- | :--- |
+| **3V3 / 5V** | VCC | Sensor Power |
+| **GND** | GND | Sensor Ground |
+| **GPIO 4** | DATA / OUT | DHT22 Temperature & Humidity Data Pin |
+
+---
 
 
-## 🚀 Getting Started (Android App)
+## 🚀 Getting Started & Installation
 
 ### Prerequisites
 * **Android Studio**: Jellyfish / Koala or newer
@@ -101,7 +115,7 @@ AI_BOT20/
 
 ### 1. ESP32 Firmware Setup
 1. Open `firmware/AI_Bot_ESP32_DHT22.ino` in Arduino IDE.
-2. Install libraries: `DHT sensor library`, `Adafruit Unified Sensor`, `ESPAsyncWebServer` (optional).
+2. Install libraries: `DHT sensor library`, `Adafruit Unified Sensor`.
 3. Select board: **ESP32 Dev Module**.
 4. Upload firmware to ESP32 via USB.
 
@@ -121,28 +135,17 @@ AI_BOT20/
 
 ## 📲 Permissions Required
 
-```
-+--------------------------------------------------------------+
-| 🟢 ESP32 Connected (USB OTG)                      📡 Settings|
-|                                                              |
-| +--------------+              +------------------+           |
-| | DIGITAL CLOCK|              |   ROBOT FACE     |           |
-| | 08:28:37 PM  |              |   (👀 Animated)  |           |
-| +--------------+              +------------------+           |
-|                                                              |
-|  🗣 "What is the room temperature?"                          |
-|                                                              |
-| [⚡ 88%]  [🌡 28.4°C]  [💧 63%]                  🎙 [ASK FRIDAY]|
-| [Normal]  [Smile]  [Cry]  [Shiver]  [Angry]                  |
-+--------------------------------------------------------------+
-```
 ![Project Screenshot](Dashboard_SS.png)
+
 
 * `ACCESS_NOTIFICATION_POLICY`: Auto-enables Distraction-Free DND mode.
 * `BIND_NOTIFICATION_LISTENER_SERVICE`: Real-time YouTube Music / Spotify track & album art sync.
+* `SCHEDULE_EXACT_ALARM` & `SET_ALARM`: System Alarm Clock scheduling.
 * `BLUETOOTH_SCAN` & `BLUETOOTH_CONNECT`: BLE scanning and GATT connection.
 * `RECORD_AUDIO`: Friday voice assistant speech recognition.
 * `READ_MEDIA_AUDIO` / `READ_EXTERNAL_STORAGE`: Local music file playback.
+
+---
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
