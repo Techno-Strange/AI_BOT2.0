@@ -50,8 +50,7 @@
 * **`🎭 MODES` Panel**: Dedicated dialog panel with 1-tap options for all expression modes, assistant queries, alarm, stopwatch, timer, and music controls.
 * **`🎙 MIC OFF / LISTENING`**: Interactive mic toggle button for continuous background speech recognition.
 
-### 🔕 Distraction-Free Priority DND Mode
-* **Notification Suppression**: Auto-enables Priority Do Not Disturb (DND) mode while running, keeping notification popups and sounds hidden. Restores original settings upon exit.
+
 ### 🔕 Distraction-Free DND Mode
 * **Notification Suppression**: Automatically enables Priority Do Not Disturb (DND) mode while the app is active, keeping notification popups and sounds hidden. Restores original settings when exiting.
 
