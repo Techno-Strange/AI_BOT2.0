@@ -1,4 +1,4 @@
-# AI_BOT 2.0 🤖⚡
+# F.R.I.D.A.Y Table Clock Bot 🤖⚡
 > **Futuristic Android Companion App & ESP32 Smart Robot Ecosystem**
 
 ![Android](https://img.shields.io/badge/Android-14%2B-10B981?style=for-the-badge&logo=android&logoColor=white)
